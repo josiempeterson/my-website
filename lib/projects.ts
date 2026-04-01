@@ -37,7 +37,7 @@ export const portfolioProjects: readonly PortfolioProject[] = [
     title: "Vantaca IQ",
     description: "Analytics platform for 340+ companies and 36,000+ associations",
     tags: ["Data Analytics", "SaaS"],
-    thumb: "bg-gradient-to-br from-amber-600/65 via-orange-700/55 to-zinc-950/90",
+    thumb: "bg-gradient-to-br from-emerald-950/60 via-lime-950/45 to-zinc-950/90",
     href: "/work/vantaca-iq",
   },
   {
@@ -53,7 +53,7 @@ export const portfolioProjects: readonly PortfolioProject[] = [
     title: "Community Impact Statement",
     description: "Helping management companies prove their value to HOA boards",
     tags: ["Data Visualization", "Reporting"],
-    thumb: "bg-gradient-to-br from-rose-600/55 via-amber-800/40 to-zinc-950/95",
+    thumb: "bg-gradient-to-br from-rose-600/50 via-emerald-950/45 to-zinc-950/95",
     href: "/work/community-impact",
   },
 ];

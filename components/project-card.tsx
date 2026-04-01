@@ -7,7 +7,7 @@ import type { PortfolioProject } from "@/lib/projects";
 const MotionLink = motion.create(Link);
 
 const ACCENT_GLOW =
-  "0 0 0 1px rgba(201, 168, 124, 0.38), 0 28px 56px -18px rgba(0, 0, 0, 0.78)";
+  "0 0 0 1px rgba(132, 144, 122, 0.4), 0 28px 56px -18px rgba(0, 0, 0, 0.78)";
 const REST_SHADOW =
   "0 0 0 1px rgba(255, 255, 255, 0.06), 0 8px 24px -12px rgba(0, 0, 0, 0.5)";
 

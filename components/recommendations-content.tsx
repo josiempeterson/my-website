@@ -22,6 +22,58 @@ const cardItemVariants = {
   },
 } as const;
 
+type GridCardSize = "sm" | "md" | "lg";
+
+type CardLayout = {
+  spanLg: string;
+  cardSize: GridCardSize;
+  /** Chessboard tone: (row + col) % 2 — neighbors in a row always differ. */
+  toneEven: boolean;
+};
+
+/**
+ * 12-col grid: pair rows alternate 7/5 vs 5/7. Odd total: last three cards share one row (4+4+4) so none sit alone full-width.
+ */
+function getRecommendationCardLayout(index: number, total: number): CardLayout {
+  if (total === 1) {
+    return {
+      spanLg: "lg:col-span-8 lg:col-start-3",
+      cardSize: "lg",
+      toneEven: true,
+    };
+  }
+
+  const oddTotal = total % 2 === 1;
+  const tripleStart = oddTotal && total >= 3 ? total - 3 : -1;
+
+  if (tripleStart >= 0 && index >= tripleStart) {
+    const row = Math.floor(tripleStart / 2);
+    const col = index - tripleStart;
+    return {
+      spanLg: "lg:col-span-4",
+      cardSize: "md",
+      toneEven: (row + col) % 2 === 0,
+    };
+  }
+
+  const row = Math.floor(index / 2);
+  const col = index % 2;
+  const largeOnLeft = row % 2 === 0;
+  const isLeft = col === 0;
+  if (largeOnLeft) {
+    return {
+      spanLg: isLeft ? "lg:col-span-7" : "lg:col-span-5",
+      cardSize: isLeft ? "lg" : "sm",
+      toneEven: (row + col) % 2 === 0,
+    };
+  }
+  return {
+    spanLg: isLeft ? "lg:col-span-5" : "lg:col-span-7",
+    cardSize: isLeft ? "sm" : "lg",
+    toneEven: (row + col) % 2 === 0,
+  };
+}
+
 export function RecommendationsContent() {
   return (
     <div className="mx-auto w-full max-w-6xl flex-1 px-4 pb-24 sm:px-6 sm:pb-32 md:pb-40">
@@ -61,24 +113,30 @@ export function RecommendationsContent() {
         viewport={pageMotion.inViewSoft}
         variants={cardGridVariants}
       >
-        {gridTestimonials.map((t) => (
-          <motion.div
-            key={t.name}
-            className={`col-span-1 flex min-h-0 min-w-0 ${t.gridSpanLg ?? "lg:col-span-6"}`}
-            variants={cardItemVariants}
-          >
-            <TestimonialCard
-              name={t.name}
-              title={t.title}
-              quote={t.quote}
-              imageSrc={t.imageSrc}
-              pullQuote={t.pullQuote}
-              cardSize={t.cardSize ?? "md"}
-              accentHighlight={t.accentHighlight}
-              cardWash={t.cardWash}
-            />
-          </motion.div>
-        ))}
+        {gridTestimonials.map((t, index) => {
+          const { spanLg, cardSize, toneEven } = getRecommendationCardLayout(
+            index,
+            gridTestimonials.length,
+          );
+          const cardTone = toneEven ? "bg-black" : "bg-[#1a1a1a]";
+          return (
+            <motion.div
+              key={`${index}-${t.name}`}
+              className={`col-span-1 flex min-h-0 min-w-0 ${spanLg}`}
+              variants={cardItemVariants}
+            >
+              <TestimonialCard
+                name={t.name}
+                title={t.title}
+                quote={t.quote}
+                imageSrc={t.imageSrc}
+                pullQuote={t.pullQuote}
+                cardSize={t.cardSize ?? cardSize}
+                cardTone={cardTone}
+              />
+            </motion.div>
+          );
+        })}
       </motion.div>
     </div>
   );
