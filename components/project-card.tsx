@@ -30,7 +30,7 @@ const thumbVariants = {
 } as const;
 
 type ProjectCardProps = {
-  project: Pick<PortfolioProject, "title" | "description" | "tags" | "thumb">;
+  project: Pick<PortfolioProject, "title" | "description" | "tags" | "thumb" | "href">;
   href?: string;
   index?: number;
 };
@@ -66,7 +66,9 @@ function CardMeta({ project }: { project: ProjectCardProps["project"] }) {
   );
 }
 
-export function ProjectCard({ project, href, index = 0 }: ProjectCardProps) {
+export function ProjectCard({ project, href: hrefProp, index = 0 }: ProjectCardProps) {
+  const href = hrefProp ?? project.href;
+
   const inViewTransition = {
     duration: 0.65,
     delay: index * 0.11,

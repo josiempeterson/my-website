@@ -22,7 +22,7 @@ export default function Home() {
       <section id="latest-work" className="scroll-mt-28">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-8 md:gap-y-16 lg:gap-y-20">
           {portfolioProjects.map((p, i) => (
-            <ProjectCard key={p.id} project={p} href="/work" index={i} />
+            <ProjectCard key={p.id} project={p} href={p.href ?? "/work"} index={i} />
           ))}
         </div>
       </section>

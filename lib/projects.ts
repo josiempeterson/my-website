@@ -1,52 +1,59 @@
-export const portfolioProjects = [
-  {
-    id: "1",
-    title: "Case study one",
-    description:
-      "End-to-end product exploration, from discovery through high-fidelity UI and handoff.",
-    tags: ["SaaS", "Web"] as const,
-    thumb: "bg-gradient-to-br from-amber-400/90 via-orange-500/75 to-rose-600/70",
-  },
-  {
-    id: "2",
-    title: "Case study two",
-    description:
-      "Mobile-first flows, usability testing, and a scalable component library for native apps.",
-    tags: ["Mobile", "Research"] as const,
-    thumb: "bg-gradient-to-br from-sky-400/85 via-blue-500/70 to-indigo-600/65",
-  },
-  {
-    id: "3",
-    title: "Case study three",
-    description:
-      "AI-assisted workflows, rapid prototyping, and design patterns for generative experiences.",
-    tags: ["AI", "Prototyping"] as const,
-    thumb: "bg-gradient-to-br from-violet-400/80 via-purple-500/70 to-fuchsia-600/65",
-  },
-  {
-    id: "4",
-    title: "Case study four",
-    description:
-      "Information architecture refresh, journey mapping, and a unified cross-platform system.",
-    tags: ["IA", "Design system"] as const,
-    thumb: "bg-gradient-to-br from-emerald-400/80 via-teal-500/70 to-cyan-600/60",
-  },
-  {
-    id: "5",
-    title: "Case study five",
-    description:
-      "Visual storytelling, marketing surfaces, and conversion-focused iteration with PM and eng.",
-    tags: ["Marketing", "Web"] as const,
-    thumb: "bg-gradient-to-br from-orange-300/90 via-amber-500/75 to-yellow-600/55",
-  },
-  {
-    id: "6",
-    title: "Case study six",
-    description:
-      "Enterprise dashboards, accessibility improvements, and documentation for design ops.",
-    tags: ["Enterprise", "A11y"] as const,
-    thumb: "bg-gradient-to-br from-fuchsia-400/75 via-pink-500/70 to-rose-600/65",
-  },
-] as const;
+export type PortfolioProject = {
+  id: string;
+  title: string;
+  description: string;
+  tags: readonly string[];
+  thumb: string;
+  href?: string;
+};
 
-export type PortfolioProject = (typeof portfolioProjects)[number];
+export const portfolioProjects: readonly PortfolioProject[] = [
+  {
+    id: "ai-assistant",
+    title: "Pluralsight's Generative AI Assistant",
+    description: "Leading the design of an AI assistant serving 7.7M+ users",
+    tags: ["Generative AI", "Product Design"],
+    thumb: "bg-gradient-to-br from-violet-500/75 via-indigo-600/70 to-slate-950/90",
+    href: "/work/ai-assistant",
+  },
+  {
+    id: "design-system",
+    title: "FamilySearch Design System",
+    description: "Building a scalable design system adopted by 50+ designers",
+    tags: ["Design Systems", "Figma"],
+    thumb: "bg-gradient-to-br from-sky-500/70 via-teal-600/65 to-emerald-950/85",
+    href: "/work/design-system",
+  },
+  {
+    id: "certification-dashboard",
+    title: "Certification Dashboard",
+    description: "A data-driven dashboard attracting 76K visitors in month one",
+    tags: ["Data Visualization", "Product Design"],
+    thumb: "bg-gradient-to-br from-cyan-500/70 via-blue-600/65 to-slate-950/90",
+    href: "/work/certification-dashboard",
+  },
+  {
+    id: "vantaca-iq",
+    title: "Vantaca IQ",
+    description: "Analytics platform for 340+ companies and 36,000+ associations",
+    tags: ["Data Analytics", "SaaS"],
+    thumb: "bg-gradient-to-br from-amber-600/65 via-orange-700/55 to-zinc-950/90",
+    href: "/work/vantaca-iq",
+  },
+  {
+    id: "revenue-manager",
+    title: "Revenue Manager",
+    description: "Billing platform serving 17,000+ associations",
+    tags: ["Enterprise SaaS", "Fintech"],
+    thumb: "bg-gradient-to-br from-emerald-600/60 via-teal-700/55 to-slate-950/90",
+    href: "/work/revenue-manager",
+  },
+  {
+    id: "community-impact",
+    title: "Community Impact Statement",
+    description: "Helping management companies prove their value to HOA boards",
+    tags: ["Data Visualization", "Reporting"],
+    thumb: "bg-gradient-to-br from-rose-600/55 via-amber-800/40 to-zinc-950/95",
+    href: "/work/community-impact",
+  },
+];

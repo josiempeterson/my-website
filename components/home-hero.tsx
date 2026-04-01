@@ -139,11 +139,13 @@ export function HomeHero() {
           ease: easeOut,
         }}
       >
-        With 7 years of experience in Product Design, I have honed my skills and expertise,
-        demonstrating advanced proficiency in strategic thinking, user advocacy, and design systems.
-        I excel in collaborating with fellow designers, product managers, and engineers to build
-        innovative and inspiring products. I also leverage AI tools and rapid prototyping to bring
-        ideas to life faster, bridging the gap between design and development.
+        With 7 years of experience in Product Design, I have honed my skills and
+        expertise, demonstrating advanced proficiency in strategic thinking,
+        user advocacy, and design systems. I excel in collaborating with fellow
+        designers, product managers, and engineers to build innovative and
+        inspiring products. I also leverage AI tools and rapid prototyping to
+        bring ideas to life faster, bridging the gap between design and
+        development.
       </motion.p>
     </section>
   );
